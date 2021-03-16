@@ -8,12 +8,19 @@
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
     <body>
+        {% if is_granted('ROLE_USER') %}
+        {{ include('partials/headerBack.html.twig') }}
+        {% else %}
+        {{ include('partials/headerFront.html.twig') }}
+        {% endif %}
         {% block body %}{% endblock %}
     </body>
 </html>
