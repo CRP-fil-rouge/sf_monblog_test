@@ -1,0 +1,13 @@
+.navbar_link {
+    color: red;
+    font-size: 2em;
+    margin-right: 1em;
+    text-transform: capitalize;
+}
+
+.product_excerpt {
+    border-bottom: 4px rgb(163, 87, 87) solid;
+    margin: 1em;
+    background-color:burlywood;
+    padding: 0.5em;
+}

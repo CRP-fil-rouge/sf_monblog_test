@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\AdminController;
 
 use App\Entity\Brand;
 use App\Form\BrandType;

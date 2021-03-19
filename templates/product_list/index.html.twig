@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+<h1>Liste des produits</h1>
+<navbar>
+    {% for category in categoryList %}
+    <a href="{{ path('product_list_bycategory', {'id':category.id}) }}" class="navbar_link">{{ category.libelle }}</a>
+    {% endfor %}
+    <a href="{{ path('product_list')}}" class="navbar_link">tous les produits</a>
+    <a href="{{ path('home') }}" class="navbar_link">accueil</a>
+</navbar>
+
+
+{% for product in productList %}
+<div class="product_excerpt"><a href="{{ path('product_single', {'id':product.id}) }}">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description }}</p>
+    <p>Prix TTC : {{ product.price }}</p>
+</a></div>
+{% endfor %}
+{% endblock %}
