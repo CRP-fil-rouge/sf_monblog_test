@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductListController!{% endblock %}
+
+{% block body %}
+
+<h1>{{ productTwig.name }}</h1>
+<p>Prix : {{ productTwig.price }} €</p>
+{% if productTwig.stock < 10 %}
+<p>Dépêchez-vous de commander...</p>
+{% endif %}
+<p>En stock : {{ productTwig.stock }} unité(s)</p>
+<p>Montant TVA : {{ (productTwig.price / (100 + productTwig.tva) * productTwig.tva)|round(2) }} €</p>
+{% if productTwig.remise != null %}
+    <p>Remise : {{ productTwig.remise }}%</p>
+{% endif %}
+{% if productTwig.message != null %}
+    <p>Message aux clients : {{ productTwig.message }}</p>
+{% endif %}
+<p>Description : {{ productTwig.description }}</p>
+<p>Catégorie : {{ productTwig.category.libelle }}</p>
+<p>Marque : {{ productTwig.brand.libelle }}</p>
+<p>Fournisseur : {{ productTwig.provider.username }}</p>
+
+<a href="{{ path('product_list') }}">Retour vers la liste des produits</a>
+{% endblock %}

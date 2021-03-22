@@ -69,6 +69,11 @@ class Product
      */
     private $provider;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $file;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -190,6 +195,18 @@ class Product
     public function setProvider(?User $provider): self
     {
         $this->provider = $provider;
+
+        return $this;
+    }
+
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    public function setFile(?string $file): self
+    {
+        $this->file = $file;
 
         return $this;
     }
