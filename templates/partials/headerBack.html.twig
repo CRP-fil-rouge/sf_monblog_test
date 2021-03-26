@@ -1,12 +1,10 @@
 <header>
-    <h1>Interface d'administration</h1>
-    <navbar>
-    <ul>
-        <li><a href="{{ path('product_index') }}"><i class="fa fa-shopping-bag"></i> Produits</a></li>
-        <li><a href="{{ path('brand_index') }}"><i class="fa fa-copyright"></i> Marques</a></li>
-        <li><a href="{{ path('category_index') }}"><i class="fa fa-file-image-o"></i> Catégories</a></li>
-        <li><a href="{{ path('home') }}"><i class="fa fa-home"></i> Accueil</a></li>
-        <li><a href="{{ path('app_logout') }}"><i class="fa fa-sign-out"></i> Se déconnecter</a></li>
-    </ul>
-    </navbar>
+    <h1 class="filtre">Interface d'administration</h1>
+    <nav class="nav_header filtre">
+        <a href="{{ path('product_index') }}"><i class="fa fa-shopping-bag"></i> Produits</a>
+        <a href="{{ path('brand_index') }}"><i class="fa fa-copyright"></i> Marques</a>
+        <a href="{{ path('category_index') }}"><i class="fa fa-file-image-o"></i> Catégories</a>
+        <a href="{{ path('home') }}"><i class="fa fa-home"></i> Accueil</a>
+        <a href="{{ path('app_logout') }}"><i class="fa fa-sign-out"></i> Se déconnecter</a>
+    </nav>
 </header>

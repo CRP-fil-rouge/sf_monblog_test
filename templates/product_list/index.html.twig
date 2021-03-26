@@ -4,22 +4,33 @@
 
 {% block body %}
 {# on créé un menu des catégorie #}
-{% for category in categoryListTwig %}
-<a href="{{ path('product_list_by_category',{'id':category.id}) }}">{{ category.libelle }}</a>
-{% endfor %}
-<a href="{{ path('product_list') }}">Retour vers la liste des produits</a>
-
-
+<nav class="nav_category">
+    {% for category in categoryListTwig %}
+    <a href="{{ path('product_list_by_category',{'id':category.id}) }}">{{ category.libelle }}</a>
+    {% endfor %}
+    <a href="{{ path('product_list') }}">Retour vers la liste des produits</a>
+</nav>
+<div class="container">
+    <div class="row">
 {# on affiche la liste des produits reçus #}
-{% for product in productListTwig %}
-<div  class="product_excerpt">
-    <a href="{{ path('product_single',{'id':product.id}) }}">
-        <h3>{{ product.name }}</h3>
-        <p>Description : {{ product.description }}</p>
-        <p>Prix : {{ product.price }}</p>
-        <p>Marque : {{ product.brand.libelle}}</p>
-    </a>
+        {% for product in productListTwig %}
+        <div class="card col-12 col-md-6 col-xl-3">
+            {% if product.file %}
+            <img src="{{ asset('uploads/images/' ~ product.file) }}" class="d-none d-md-block card-img-top" alt="...">
+            {% else %}
+            <img src="{{ asset('uploads/images/concombre-6058c8b3c81eb.jpg') }}" class="d-none d-md-block card-img-top" alt="...">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text d-none d-md-block">{{ product.description }}</p>
+                <p class="card-text">{{ product.price }}</p>
+                <a href="{{ path('product_single', {'id':product.id}) }}" class="btn btn-primary">En savoir plus</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-{% endfor %}
-
+<div class="pagination">
+{{ knp_pagination_render(productListTwig) }}
+</div>
 {% endblock %}

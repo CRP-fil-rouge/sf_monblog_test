@@ -1,3 +1,16 @@
 <header>
-    <h1>Bienvenue sur la coopérative de Jeanne</h1>
+    <h1 class="filtre text-center">Bienvenue sur la coopérative de Jeanne</h1>
+    <nav class="nav_header filtre">
+        <a href="{{ path('home') }}">Accueil</a>
+        <a href="{{ path('product_list') }}">Liste des produits</a>
+        {% if app.user %}
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+        <a href="{{ path('app_register') }}">Inscription</a>
+        <a href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
+
+
+
+    </nav>
 </header>

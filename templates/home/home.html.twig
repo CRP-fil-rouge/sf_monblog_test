@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    {# <navbar>
+        <a href="{{ path('app_login') }}">se connecter</a>
+        <a href="{{ path('app_register') }}">s'inscrire</a>
+    </navbar>
+    {% if app.user %}
+    <p>connecté en tant que {{ user.username }}</p>
+    {% endif %} #}
+   
+    <div class="container home">
+        <div class="row">
+        {# on utilise une boucle (for) pour afficher chaque élément de categoryListTwig #}
+            {% for category in categoryListTwig %}
+
+            <div class="card col-12 col-md-6 col-xl-3 filtre p-2">
+                <img src="{{ asset('/uploads/images/' ~ category.image) }}{# https://picsum.photos/300/200 #}" class="d-none d-md-block card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{ category.libelle }}</h5>
+                    <p class="card-text text-center">{{ category.description }}</p>
+                    <a href="{{ path('product_list_by_category', {'id':category.id}) }}" class="btn btn-primary">Voir les produits</a>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -11,3 +11,51 @@
     background-color:burlywood;
     padding: 0.5em;
 }
+
+header{
+    background-image: url(https://picsum.photos/800/300) !important;
+    background-size: cover !important;
+    /* height: 100px; */
+}
+
+header h1{
+    /* height: 100px; */
+}
+
+.filtre{
+    background: rgba(255,255,255,0.5);
+}
+
+.home{
+    background-image: url(https://picsum.photos/800/800) !important;
+    background-size: cover !important;
+
+}
+
+.nav_header{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav_header a{
+    font-size: 2rem;
+    color: black;
+}
+
+.nav_header a:hover{
+    color: white;
+}
+
+.nav_category{
+    display: flex;
+    justify-content: right;
+}
+
+.nav_category a{
+    color: green;
+    margin-right: 2em;
+}
+
+.pagination{
+    text-align: center;
+}
