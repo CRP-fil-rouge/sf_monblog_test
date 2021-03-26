@@ -48,7 +48,7 @@ header h1{
 
 .nav_category{
     display: flex;
-    justify-content: right;
+    justify-content: center;
 }
 
 .nav_category a{
@@ -57,5 +57,10 @@ header h1{
 }
 
 .pagination{
-    text-align: center;
+    justify-content: center;
+}
+
+.list_product{
+    background-image: url(https://picsum.photos/800/800) !important;
+    background-size: cover !important;
 }

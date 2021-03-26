@@ -1,16 +1,32 @@
 <header>
     <h1 class="filtre text-center">Bienvenue sur la coopérative de Jeanne</h1>
-    <nav class="nav_header filtre">
-        <a href="{{ path('home') }}">Accueil</a>
-        <a href="{{ path('product_list') }}">Liste des produits</a>
-        {% if app.user %}
-        <a href="{{ path('app_logout') }}">Déconnexion</a>
-        {% else %}
-        <a href="{{ path('app_register') }}">Inscription</a>
-        <a href="{{ path('app_login') }}">Connexion</a>
-        {% endif %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+        <div class="container-fluid">
+            <a href="{{ path('home') }}" class="navbar-brand">Accueil</a>
 
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{{ path('product_list') }}" class="navbar-brand">Liste des produits</a>
+                    </li>
+                    {% if app.user %}
+                    <li class="nav-item">
+                        <a href="{{ path('app_logout') }}" class="navbar-brand">Déconnexion</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{{ path('app_register') }}" class="navbar-brand">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_login') }}" class="navbar-brand">Connexion</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </nav>
 </header>
