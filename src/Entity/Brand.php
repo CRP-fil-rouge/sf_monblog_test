@@ -34,6 +34,12 @@ class Brand
      */
     private $products;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="brands")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $provider;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -94,6 +100,18 @@ class Brand
                 $product->setBrand(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProvider(): ?User
+    {
+        return $this->provider;
+    }
+
+    public function setProvider(?User $provider): self
+    {
+        $this->provider = $provider;
 
         return $this;
     }

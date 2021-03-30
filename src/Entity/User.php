@@ -88,9 +88,15 @@ class User implements UserInterface
      */
     private $products;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Brand::class, mappedBy="provider", orphanRemoval=true)
+     */
+    private $brands;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->brands = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -301,6 +307,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($product->getProvider() === $this) {
                 $product->setProvider(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Brand[]
+     */
+    public function getBrands(): Collection
+    {
+        return $this->brands;
+    }
+
+    public function addBrand(Brand $brand): self
+    {
+        if (!$this->brands->contains($brand)) {
+            $this->brands[] = $brand;
+            $brand->setProvider($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBrand(Brand $brand): self
+    {
+        if ($this->brands->removeElement($brand)) {
+            // set the owning side to null (unless already changed)
+            if ($brand->getProvider() === $this) {
+                $brand->setProvider(null);
             }
         }
 

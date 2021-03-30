@@ -9,19 +9,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BrandType extends AbstractType
+class ProviderBrandType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('libelle')
             ->add('description')
-            ->add('provider', EntityType::class, [
-                'class'=> User::class,
-                'multiple' => false,
-                'expanded' => false,
-                'choice_label' => 'username'
-            ])
         ;
     }
 
