@@ -6,6 +6,7 @@ use App\Entity\Brand;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -39,8 +40,15 @@ class ProductType extends AbstractType
             ])
             ->add('provider', EntityType::class, [
                 'class' => User::class,
+                'query_builder' =>
+                    function(EntityRepository $er){
+                        return $er->createQueryBuilder('user')
+                        ->where('user.roles=:role')
+                        ->setParameter('role', '["ROLE_PROVIDER"]')
+                        ->orderBy('user.username', 'ASC');
+                    },
                 'multiple' => false,
-                'expanded' => true,
+                'expanded' => false,
                 'choice_label' => 'username'
             ])
             ->add('file', FileType::class, [

@@ -72,4 +72,23 @@ class ProductListController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/product/name/{value}", name="find_by_name")
+     */
+    public function byName(Request $request, ProductRepository $productRepository, $value, PaginatorInterface $paginator, CategoryRepository $categoryRepository)
+    {
+        $categoryListPhp = $categoryRepository->findAll();
+
+        $dataList = $productRepository->findByName($value);
+        $productList = $paginator->paginate(
+            $dataList,
+            $request->query->getInt('page',1),
+            5
+        ); 
+        return $this->render('product_list/index.html.twig', [
+            'productListTwig' => $productList,
+            'categoryListTwig' => $categoryListPhp
+        ]);
+    }
+
 }

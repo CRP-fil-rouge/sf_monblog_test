@@ -26,6 +26,7 @@
 <div class="container list_product">
     <div class="row">
 {# on affiche la liste des produits reçus #}
+    {{ dump(productListTwig) }}
         {% for product in productListTwig %}
         <div class="card col-12 col-md-6 col-xl-3 filtre">
             {% if product.file %}
